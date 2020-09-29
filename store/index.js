@@ -1,20 +1,18 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
 import {fillData} from '~/assets/js/data/store.js';
-import {auth} from './auth';
 
-Vue.use(Vuex)
+export const store = () => ({});
+export const mutations = {};
+export const actions = {
+  nuxtServerInit({commit}, {req}){
+    fillData(commit);
+  }
+};
+export const getters = {};
 
-const store = (function(){
-  let s = new Vuex.Store({
-    modules: {
-      auth
-    }
-  });
-
-  return () => s;
-})();
-
-fillData(store);
-
-export default store;
+export default {
+  namespaced: true,
+  store,
+  mutations,
+  actions,
+  getters
+};

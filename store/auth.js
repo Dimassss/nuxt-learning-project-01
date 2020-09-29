@@ -6,17 +6,17 @@ export const state = () => ({
 
 export const mutations = {
   setUser(state, user){
-    state.user = new AuthUser(user);
+    state.user = Object.assign({}, new AuthUser(user));
   }
 };
 
 export const getters = {
   user(state){
-    return state.user;
+    return new AuthUser(state.user);
   }
 };
 
-export const auth = {
+export default {
   namespaced: true,
   state,
   mutations,
